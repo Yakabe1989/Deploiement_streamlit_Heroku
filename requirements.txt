@@ -1,4 +1,3 @@
-
 altair==4.1.0
 argon2-cffi
 argon2-cffi-bindings
@@ -123,7 +122,6 @@ widgetsnbextension
 win-inet-pton
 wincertstore==0.2
 zipp==3.8.0
-
 zlib==1.2.12
 pip==22.1.2
 wheel==0.37.1
