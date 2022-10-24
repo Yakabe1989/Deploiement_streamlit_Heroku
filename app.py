@@ -78,6 +78,7 @@ def Caracteristiques_client(ID):
     'EXT_SOURCE_3',
     'prediction']
     DF_CAR = df[valeur]
+    DF_CAR.loc[DF_CAR["Duree_emploi_en_annee_brut"] < 0, "Duree_emploi_en_annee_brut"] = 0
     Caracteristiques = DF_CAR.loc[DF_CAR['SK_ID_CURR']==ID]
     return Caracteristiques
 
@@ -103,6 +104,7 @@ def Caracteristiques_client_similaires(ID):
     'EXT_SOURCE_3',
     'prediction']
     DF_CAR = df[valeur]
+    DF_CAR.loc[DF_CAR["Duree_emploi_en_annee_brut"] < 0, "Duree_emploi_en_annee_brut"] = 0
     decision = list(DF_CAR.loc[DF_CAR['SK_ID_CURR'] == ID, 'prediction'])
     Caracteristiques = DF_CAR.loc[DF_CAR['prediction'] == decision[0]]
     return Caracteristiques.describe()
@@ -131,6 +133,7 @@ def Caracteristiques_client_opposes(ID):
     'EXT_SOURCE_3',
     'prediction']
     DF_CAR = df[valeur]
+    DF_CAR.loc[DF_CAR["Duree_emploi_en_annee_brut"] < 0, "Duree_emploi_en_annee_brut"] = 0
     decision = list(DF_CAR.loc[DF_CAR['SK_ID_CURR'] == ID,'prediction'])
     Caracteristiques = DF_CAR.loc[DF_CAR['prediction'] != decision[0]]
     return Caracteristiques.describe()
