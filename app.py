@@ -236,19 +236,6 @@ if st.sidebar.checkbox("Features importance", key=38):
     shap_data = data.reset_index(drop=True)
     shap_index = list(shap_data.index[shap_data['SK_ID_CURR'] == ID])
 
-    st.subheader('modele global')
-    nb_champs = st.slider('Combien de champs voulez vous visionnez ?', 0, 20, 10)
-    fig, ax = plt.subplots(nrows=1, ncols=1)
-    shap.summary_plot(Shap_values, data, feature_names=data.columns, max_display=nb_champs)
-    st.pyplot(fig)
-
-    with st.expander("Description du modèle global"):
-        st.write("""
-                    ce graphique présente les variables discriminantes pour l'ensemble des individus 
-                    du modèle.
-                   """)
-
-
     st.subheader("modele local")
     fig2, ax = plt.subplots(nrows=1, ncols=1)
     shap.waterfall_plot(shap.Explanation(values=Shap_values[1][shap_index[0]],
@@ -258,7 +245,8 @@ if st.sidebar.checkbox("Features importance", key=38):
     with st.expander("Description du modèle local"):
         st.write("""
                 ce graphique présente les variables discriminantes pour l'acceptation ou
-                le refus de credit pour un individu
+                le refus de credit pour un individu.en rouge, les champs favorisant une acceptation de credit.
+                En bleu, ceux favorisant un refus.
             """)
 
 if st.sidebar.checkbox("Caractéristiques clients", key=38):
